@@ -46,15 +46,13 @@ public class Listeners implements Listener {
         String name = event.getName();
         
         // 检查玩家名字是否包含指定前缀，如果是则跳过登录
-        boolean shouldSkipLogin = false;
         for (String prefix : Config.Settings.SkipLoginPrefixes) {
             if (name.startsWith(prefix)) {
-                shouldSkipLogin = true;
-                break;
+                // 将玩家添加到已登录列表，这样后续的事件检查会认为该玩家已登录
+                LoginPlayer lp = new LoginPlayer(name, "", "", "");
+                LoginPlayerHelper.add(lp);
+                return; // 跳过登录验证，直接允许进入
             }
-        }
-        if (shouldSkipLogin) {
-            return; // 跳过登录验证，直接允许进入
         }
         
         LoginPlayer lp = Cache.getIgnoreCase(name);
@@ -195,6 +193,18 @@ public class Listeners implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event){
         Player p = event.getPlayer();
         Cache.refresh(p.getName());
+        
+        // 检查玩家名字是否包含指定前缀，如果是则添加到已登录列表（跳过登录）
+        for (String prefix : Config.Settings.SkipLoginPrefixes) {
+            if (p.getName().startsWith(prefix)) {
+                if (!LoginPlayerHelper.isLogin(p.getName())) {
+                    LoginPlayer lp = new LoginPlayer(p.getName(), "", "", "");
+                    LoginPlayerHelper.add(lp);
+                }
+                break;
+            }
+        }
+        
         if (Config.Settings.CanTpSpawnLocation) {
             p.teleport(Config.Settings.SpawnLocation);
         }

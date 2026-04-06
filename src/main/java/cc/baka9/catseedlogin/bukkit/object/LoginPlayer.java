@@ -46,6 +46,13 @@ public class LoginPlayer {
         this.password = password;
     }
 
+    public LoginPlayer(String name, String password, String email, String ips){
+        this.name = name;
+        this.password = password;
+        this.email = email;
+        this.ips = ips;
+    }
+
     public void crypt(){
         password = Crypt.encrypt(name, password);
     }
