@@ -1,45 +1,63 @@
-# Created by .ignore support plugin (hsz.mobi)
-### Example user template template
-### Example user template
-
-# IntelliJ project files
-.idea
-*.iml
-out
-gen### Maven template
-target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
-dependency-reduced-pom.xml
-buildNumber.properties
-.mvn/timing.properties
-
-# Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
-!/.mvn/wrapper/maven-wrapper.jar
-### Java template
-# Compiled class file
+# Compiled and build artifacts
 *.class
+*.o
+*.obj
+*.out
+build/
+target/
 
-# Log file
+# Dependencies
+.gradle/
+.mypy_cache/
+.pytest_cache/
+__pycache__/
+node_modules/
+venv/
+.venv/
+dist/
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs and temp files
 *.log
+*.tmp
 
-# BlueJ files
-*.ctxt
+# System files
+.DS_Store
+Thumbs.db
+.env
+.env.local
+*.env.*
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+# Coverage
+coverage/
+htmlcov/
+.coverage
 
-# Package Files #
-*.war
-*.nar
-*.ear
+# Compressed files
 *.zip
-*.tar.gz
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
 *.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-src/test/
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
